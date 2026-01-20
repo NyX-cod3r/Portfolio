@@ -1,0 +1,607 @@
+# Portfolio
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satyam Kumar | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #05060a;
+            --panel: rgba(255, 255, 255, 0.04);
+            --card: rgba(255, 255, 255, 0.06);
+            --text: #e8ecf2;
+            --muted: #9aa4b5;
+            --accent: #80ffea;
+            --accent-strong: #7c6cff;
+            --border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Space Grotesk", "Segoe UI", sans-serif;
+            background: radial-gradient(120% 120% at 10% 10%, rgba(128, 255, 234, 0.08), transparent),
+                radial-gradient(100% 100% at 90% 0%, rgba(124, 108, 255, 0.12), transparent),
+                var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            backdrop-filter: blur(12px);
+            background: linear-gradient(90deg, rgba(5, 6, 10, 0.85), rgba(5, 6, 10, 0.6));
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-shell {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            font-weight: 700;
+            letter-spacing: 0.4px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            box-shadow: 0 0 20px rgba(128, 255, 234, 0.7);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 18px;
+            padding: 0;
+            margin: 0;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--muted);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 999px;
+            transition: all 0.2s ease;
+        }
+
+        nav a.active,
+        nav a:hover {
+            color: var(--text);
+            background: var(--card);
+            border: 1px solid var(--border);
+        }
+
+        .pill-btn {
+            padding: 10px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(128, 255, 234, 0.12), rgba(124, 108, 255, 0.12));
+            color: var(--text);
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, border 0.18s ease;
+        }
+
+        .pill-btn:hover {
+            transform: translateY(-2px);
+            border-color: rgba(128, 255, 234, 0.6);
+            box-shadow: 0 10px 30px rgba(128, 255, 234, 0.25);
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 32px 24px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+        }
+
+        section {
+            display: grid;
+            gap: 28px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            align-items: center;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: var(--card);
+            color: var(--muted);
+            font-weight: 600;
+            border: 1px solid var(--border);
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 4vw, 3.4rem);
+            line-height: 1.1;
+            margin: 10px 0 14px;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: 1.4rem;
+        }
+
+        p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .glass {
+            padding: 18px;
+            border-radius: 18px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 14px;
+        }
+
+        .stat {
+            padding: 16px;
+            border-radius: 16px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 1.6rem;
+            color: var(--text);
+        }
+
+        .stat span {
+            color: var(--muted);
+        }
+
+        .section-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .chip {
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            color: var(--text);
+            font-weight: 600;
+            letter-spacing: 0.2px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 18px;
+        }
+
+        .card {
+            padding: 18px;
+            border-radius: 16px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.18s ease, border 0.18s ease, box-shadow 0.18s ease;
+        }
+
+        .card::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(145deg, rgba(128, 255, 234, 0.08), rgba(124, 108, 255, 0.08));
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(128, 255, 234, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .card:hover::after {
+            opacity: 1;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 1.1rem;
+        }
+
+        .meta {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .meta span {
+            padding: 6px 10px;
+            border-radius: 8px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 14px;
+        }
+
+        .timeline-item {
+            padding: 16px;
+            border-radius: 14px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            display: grid;
+            gap: 6px;
+        }
+
+        .timeline-item small {
+            color: var(--muted);
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            align-items: start;
+        }
+
+        form {
+            display: grid;
+            gap: 12px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 14px;
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        footer {
+            max-width: 1200px;
+            margin: 0 auto 32px;
+            padding: 0 24px;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            padding: 12px 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: var(--text);
+            box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.2s ease, transform 0.2s ease;
+            pointer-events: none;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 720px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-shell {
+                padding: 14px 16px;
+            }
+
+            main {
+                padding: 24px 16px 64px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="nav-shell">
+            <div class="brand">
+                <span class="brand-dot"></span>
+                <span>Satyam Kumar</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#hero" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="pill-btn" onclick="window.open('mailto:satyam@example.com')">Email Me</button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div>
+                <span class="tag">Front-end & UI/UX</span>
+                <h1>Designing interfaces and building the web with precision and curiosity.</h1>
+                <p>I am Satyam Kumar, a B.Tech CSE student at NIMS University (Rajasthan), focused on front-end
+                    development and UI/UX design. I enjoy crafting intentional visuals, smooth interactions, and
+                    accessible experiences.</p>
+                <div class="hero-actions">
+                    <button class="pill-btn"
+                        onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">View
+                        Projects</button>
+                    <a class="pill-btn" style="border-style:dashed" href="#contact">Let us collaborate</a>
+                </div>
+            </div>
+            <div class="glass">
+                <div class="stats">
+                    <div class="stat">
+                        <strong>3+</strong>
+                        <span>Front-end toolkits: React, Next.js, vanilla JS</span>
+                    </div>
+                    <div class="stat">
+                        <strong>20+</strong>
+                        <span>Interface experiments and mini projects</span>
+                    </div>
+                    <div class="stat">
+                        <strong>UI/UX</strong>
+                        <span>Wireframes, component systems, design audits</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-head">
+                <h2>About</h2>
+                <span class="tag">B.Tech CSE @ NIMS University</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Story</h3>
+                    <p>Currently exploring the intersection of design thinking and front-end engineering. I love
+                        translating ideas into prototypes that feel polished and intentional.</p>
+                </div>
+                <div class="card">
+                    <h3>Focus Areas</h3>
+                    <p>Front-end architectures, responsive design, UI animation, and building component libraries that
+                        are accessible and maintainable.</p>
+                </div>
+                <div class="card">
+                    <h3>Tools I reach for</h3>
+                    <div class="chips">
+                        <span class="chip">Figma</span>
+                        <span class="chip">VS Code</span>
+                        <span class="chip">React</span>
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">CSS Grid</span>
+                        <span class="chip">Tailwind</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-head">
+                <h2>Selected Projects</h2>
+                <span class="tag">Interface-first builds</span>
+            </div>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Concept Dashboard</h3>
+                    <p>Minimal analytics dashboard focused on clarity and motion. Built with React and charting
+                        utilities, with attention to keyboard navigation and color contrast.</p>
+                    <div class="meta">
+                        <span>React</span><span>Styled components</span><span>Accessibility</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Portfolio Templates</h3>
+                    <p>A set of landing page variations exploring typography, layout balance, and micro-interactions.
+                        Optimized for responsive breakpoints.</p>
+                    <div class="meta">
+                        <span>HTML</span><span>CSS Grid</span><span>Motion</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>UI Pattern Library</h3>
+                    <p>Reusable buttons, cards, and navigation patterns documented with usage guidelines and tokens for
+                        quick iteration.</p>
+                    <div class="meta">
+                        <span>Design systems</span><span>Tokens</span><span>Figma</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <div class="section-head">
+                <h2>Experience & Learning</h2>
+                <span class="tag">Growing every sprint</span>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <small>2024 - Present</small>
+                    <strong>B.Tech CSE, NIMS University</strong>
+                    <p>Diving into algorithms, web technologies, and design thinking while building side projects that
+                        combine code and aesthetics.</p>
+                </div>
+                <div class="timeline-item">
+                    <small>2023 - Present</small>
+                    <strong>Front-end & UI/UX Practice</strong>
+                    <p>Hands-on work with responsive layouts, design systems, and usability testing; collaborating with
+                        peers on hackathon prototypes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-head">
+                <h2>Contact</h2>
+                <span class="tag">Let us build together</span>
+            </div>
+            <div class="contact">
+                <div class="card">
+                    <h3>Let us talk</h3>
+                    <p>I am open to internships, collaborations, and UI/UX design discussions. Drop a note and I will
+                        reply soon.</p>
+                    <div class="meta">
+                        <span>Based in Rajasthan</span>
+                        <span>Front-end & UX</span>
+                        <span>Available for remote</span>
+                    </div>
+                </div>
+                <form id="contact-form">
+                    <div>
+                        <label for="name">Name</label>
+                        <input id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" placeholder="you@example.com" required>
+                    </div>
+                    <div>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Say hello..." required></textarea>
+                    </div>
+                    <button type="submit" class="pill-btn">Send message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast" id="toast">Message sent. I will reply soon.</div>
+
+    <footer>
+        <span>Designed and built by Satyam Kumar.</span>
+        <div class="meta" style="margin:0">
+            <span>Front-end</span><span>UI/UX</span><span>B.Tech CSE</span>
+        </div>
+    </footer>
+
+    <script>
+        const navLinks = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('main section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const link = document.querySelector(`nav a[href="#${id}"]`);
+                if (entry.isIntersecting) {
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    if (link) link.classList.add('active');
+                }
+            });
+        }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
+
+        sections.forEach(section => observer.observe(section));
+
+        const form = document.getElementById('contact-form');
+        const toast = document.getElementById('toast');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+            form.reset();
+        });
+    </script>
+</body>
+
+</html>
