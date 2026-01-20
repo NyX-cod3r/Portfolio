@@ -1,4 +1,3 @@
-# Portfolio
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,10 +15,10 @@
             --card: rgba(255, 255, 255, 0.06);
             --text: #e8ecf2;
             --muted: #9aa4b5;
-            --accent: #80ffea;
-            --accent-strong: #7c6cff;
+            --accent: #0066ff;
+            --accent-light: rgba(0, 102, 255, 0.15);
             --border: rgba(255, 255, 255, 0.08);
-            --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -28,9 +27,9 @@
 
         body {
             margin: 0;
-            font-family: "Space Grotesk", "Segoe UI", sans-serif;
-            background: radial-gradient(120% 120% at 10% 10%, rgba(128, 255, 234, 0.08), transparent),
-                radial-gradient(100% 100% at 90% 0%, rgba(124, 108, 255, 0.12), transparent),
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(120% 120% at 10% 10%, rgba(0, 102, 255, 0.1), transparent),
+                radial-gradient(100% 100% at 90% 0%, rgba(0, 102, 255, 0.05), transparent),
                 var(--bg);
             color: var(--text);
             min-height: 100vh;
@@ -46,8 +45,8 @@
             position: sticky;
             top: 0;
             z-index: 10;
-            backdrop-filter: blur(12px);
-            background: linear-gradient(90deg, rgba(5, 6, 10, 0.85), rgba(5, 6, 10, 0.6));
+            backdrop-filter: blur(10px);
+            background: rgba(5, 6, 10, 0.85);
             border-bottom: 1px solid var(--border);
         }
 
@@ -70,11 +69,10 @@
         }
 
         .brand-dot {
-            width: 12px;
-            height: 12px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
-            box-shadow: 0 0 20px rgba(128, 255, 234, 0.7);
+            background: var(--accent);
         }
 
         nav ul {
@@ -90,32 +88,34 @@
             color: var(--muted);
             font-weight: 600;
             padding: 8px 12px;
-            border-radius: 999px;
-            transition: all 0.2s ease;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
 
         nav a.active,
         nav a:hover {
-            color: var(--text);
-            background: var(--card);
-            border: 1px solid var(--border);
+            color: var(--accent);
+            background: var(--accent-light);
+            border: none;
         }
 
         .pill-btn {
             padding: 10px 16px;
-            border-radius: 999px;
-            border: 1px solid var(--border);
-            background: linear-gradient(135deg, rgba(128, 255, 234, 0.12), rgba(124, 108, 255, 0.12));
-            color: var(--text);
-            font-weight: 700;
+            border-radius: 6px;
+            border: 1px solid #64b5f6;
+            background: #0066ff;
+            color: white;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.18s ease, box-shadow 0.18s ease, border 0.18s ease;
+            transition: all 0.2s ease;
+            font-size: 0.95rem;
         }
 
         .pill-btn:hover {
-            transform: translateY(-2px);
-            border-color: rgba(128, 255, 234, 0.6);
-            box-shadow: 0 10px 30px rgba(128, 255, 234, 0.25);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+            border-color: #90caf9;
         }
 
         main {
@@ -132,6 +132,42 @@
             gap: 28px;
         }
 
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         .hero {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -143,18 +179,20 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 12px;
-            border-radius: 999px;
-            background: var(--card);
-            color: var(--muted);
+            padding: 6px 12px;
+            border-radius: 6px;
+            background: rgba(0, 102, 255, 0.15);
+            color: #64b5f6;
             font-weight: 600;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            font-size: 0.85rem;
         }
 
         h1 {
             font-size: clamp(2.2rem, 4vw, 3.4rem);
-            line-height: 1.1;
-            margin: 10px 0 14px;
+            line-height: 1.2;
+            margin: 16px 0 20px;
+            font-weight: 700;
         }
 
         h2 {
@@ -165,7 +203,7 @@
         p {
             margin: 0;
             color: var(--muted);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         .hero-actions {
@@ -175,9 +213,25 @@
             align-items: center;
         }
 
+        .hero-actions .pill-btn:nth-child(1) {
+            animation: fadeInUp 0.7s ease-out 0.2s both;
+        }
+
+        .hero-actions .pill-btn:nth-child(2) {
+            animation: fadeInUp 0.7s ease-out 0.3s both;
+            background: transparent;
+            color: #64b5f6;
+            border: 1px solid #64b5f6;
+        }
+
+        .hero-actions .pill-btn:nth-child(2):hover {
+            background: rgba(0, 102, 255, 0.15);
+            border-color: #90caf9;
+        }
+
         .glass {
             padding: 18px;
-            border-radius: 18px;
+            border-radius: 12px;
             background: var(--card);
             border: 1px solid var(--border);
             box-shadow: var(--shadow);
@@ -191,20 +245,22 @@
 
         .stat {
             padding: 16px;
-            border-radius: 16px;
-            background: var(--panel);
-            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: transparent;
+            border: none;
             text-align: left;
         }
 
         .stat strong {
             display: block;
-            font-size: 1.6rem;
-            color: var(--text);
+            font-size: 1.4rem;
+            color: var(--accent);
+            margin-bottom: 4px;
         }
 
         .stat span {
             color: var(--muted);
+            font-size: 0.95rem;
         }
 
         .section-head {
@@ -221,13 +277,20 @@
         }
 
         .chip {
-            padding: 10px 14px;
-            border-radius: 999px;
-            background: var(--panel);
-            border: 1px solid var(--border);
-            color: var(--text);
+            padding: 8px 12px;
+            border-radius: 6px;
+            background: rgba(0, 102, 255, 0.15);
+            border: 1px solid rgba(0, 102, 255, 0.3);
+            color: #64b5f6;
             font-weight: 600;
             letter-spacing: 0.2px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .chip:hover {
+            background: rgba(0, 102, 255, 0.25);
+            border-color: rgba(0, 102, 255, 0.5);
         }
 
         .card-grid {
@@ -236,30 +299,50 @@
             gap: 18px;
         }
 
+        .card-grid .card {
+            animation: fadeInUp 0.7s ease-out both;
+        }
+
+        .card-grid .card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .card-grid .card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .card-grid .card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .card-grid .card:nth-child(n+4) {
+            animation-delay: 0.4s;
+        }
+
         .card {
             padding: 18px;
-            border-radius: 16px;
-            background: var(--panel);
+            border-radius: 10px;
+            background: var(--card);
             border: 1px solid var(--border);
             position: relative;
             overflow: hidden;
-            transition: transform 0.18s ease, border 0.18s ease, box-shadow 0.18s ease;
+            transition: all 0.3s ease;
         }
 
         .card::after {
             content: "";
             position: absolute;
             inset: 0;
-            background: linear-gradient(145deg, rgba(128, 255, 234, 0.08), rgba(124, 108, 255, 0.08));
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.08), rgba(0, 102, 255, 0.02));
             opacity: 0;
-            transition: opacity 0.2s ease;
+            transition: opacity 0.3s ease;
             pointer-events: none;
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(128, 255, 234, 0.4);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+            transform: translateY(-2px);
+            border-color: #64b5f6;
+            box-shadow: 0 8px 24px rgba(0, 102, 255, 0.12);
         }
 
         .card:hover::after {
@@ -269,6 +352,7 @@
         .card h3 {
             margin: 0 0 8px;
             font-size: 1.1rem;
+            color: var(--text);
         }
 
         .meta {
@@ -280,12 +364,12 @@
 
         .meta span {
             padding: 6px 10px;
-            border-radius: 8px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            color: var(--muted);
+            border-radius: 6px;
+            background: rgba(0, 102, 255, 0.15);
+            border: 1px solid rgba(0, 102, 255, 0.2);
+            color: #64b5f6;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
 
         .timeline {
@@ -294,16 +378,63 @@
         }
 
         .timeline-item {
+            animation: fadeInUp 0.7s ease-out both;
+        }
+
+        .timeline-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .timeline-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        /* Scroll reveal animations */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal-text.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1.reveal-text.in-view {
+            animation: fadeInUp 0.7s ease-out;
+        }
+
+        h2.reveal-text.in-view {
+            animation: slideInLeft 0.7s ease-out 0.1s both;
+        }
+
+        p.reveal-text.in-view {
+            animation: fadeInUp 0.7s ease-out 0.15s both;
+        }
+
+        .timeline-item {
             padding: 16px;
-            border-radius: 14px;
-            background: var(--panel);
+            border-radius: 10px;
+            background: transparent;
             border: 1px solid var(--border);
             display: grid;
             gap: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            border-color: #64b5f6;
+            background: rgba(0, 102, 255, 0.08);
         }
 
         .timeline-item small {
-            color: var(--muted);
+            color: #64b5f6;
+            font-weight: 600;
+        }
+
+        .timeline-item strong {
+            color: var(--text);
         }
 
         .contact {
@@ -316,26 +447,37 @@
         form {
             display: grid;
             gap: 12px;
-            background: var(--panel);
+            background: var(--card);
             border: 1px solid var(--border);
             padding: 16px;
-            border-radius: 14px;
+            border-radius: 10px;
         }
 
         label {
             font-weight: 600;
             color: var(--text);
+            font-size: 0.95rem;
         }
 
         input,
         textarea {
             width: 100%;
-            padding: 12px;
-            border-radius: 10px;
+            padding: 10px 12px;
+            border-radius: 8px;
             border: 1px solid var(--border);
             background: rgba(255, 255, 255, 0.02);
             color: var(--text);
             font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #64b5f6;
+            background: rgba(255, 255, 255, 0.04);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.15);
         }
 
         textarea {
@@ -353,6 +495,7 @@
             align-items: center;
             gap: 12px;
             flex-wrap: wrap;
+            font-size: 0.9rem;
         }
 
         .toast {
@@ -360,15 +503,17 @@
             bottom: 18px;
             right: 18px;
             padding: 12px 16px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            color: var(--text);
-            box-shadow: var(--shadow);
+            background: var(--text);
+            border: none;
+            border-radius: 8px;
+            color: var(--bg);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            transition: opacity 0.4s ease, transform 0.4s ease;
             pointer-events: none;
+            font-size: 0.95rem;
+            font-weight: 600;
         }
 
         .toast.show {
@@ -418,16 +563,16 @@
     <main>
         <section id="hero" class="hero">
             <div>
-                <span class="tag">Front-end & UI/UX</span>
-                <h1>Designing interfaces and building the web with precision and curiosity.</h1>
-                <p>I am Satyam Kumar, a B.Tech CSE student at NIMS University (Rajasthan), focused on front-end
-                    development and UI/UX design. I enjoy crafting intentional visuals, smooth interactions, and
-                    accessible experiences.</p>
+                <span class="tag">Front-end & UI/UX & Design Tools</span>
+                <h1>Designing interfaces and exploring creative tools to expand possibilities.</h1>
+                <p>I am Satyam Kumar, a B.Tech CSE student at NIMS University (Rajasthan) in 2nd Year 4th Semester. I'm
+                    focused on front-end development and UI/UX design while exploring design tools like Canva and
+                    Affinity, and game development with Unity to expand my creative horizons.</p>
                 <div class="hero-actions">
                     <button class="pill-btn"
                         onclick="document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });">View
                         Projects</button>
-                    <a class="pill-btn" style="border-style:dashed" href="#contact">Let us collaborate</a>
+                    <a class="pill-btn" href="#contact">Let us collaborate</a>
                 </div>
             </div>
             <div class="glass">
@@ -441,8 +586,8 @@
                         <span>Interface experiments and mini projects</span>
                     </div>
                     <div class="stat">
-                        <strong>UI/UX</strong>
-                        <span>Wireframes, component systems, design audits</span>
+                        <strong>Multi-tool</strong>
+                        <span>UI/UX, Canva, Affinity, Unity exploration</span>
                     </div>
                 </div>
             </div>
@@ -451,23 +596,27 @@
         <section id="about">
             <div class="section-head">
                 <h2>About</h2>
-                <span class="tag">B.Tech CSE @ NIMS University</span>
+                <span class="tag">B.Tech CSE 2nd Year 4th Sem @ NIMS University</span>
             </div>
             <div class="card-grid">
                 <div class="card">
                     <h3>Story</h3>
-                    <p>Currently exploring the intersection of design thinking and front-end engineering. I love
-                        translating ideas into prototypes that feel polished and intentional.</p>
+                    <p>Currently exploring the intersection of design thinking, front-end engineering, and creative
+                        tools. I'm diving into Canva, Affinity, and Unity to expand my skill set while translating ideas
+                        into prototypes that feel polished and intentional.</p>
                 </div>
                 <div class="card">
                     <h3>Focus Areas</h3>
-                    <p>Front-end architectures, responsive design, UI animation, and building component libraries that
-                        are accessible and maintainable.</p>
+                    <p>Front-end architectures, responsive design, UI animation, design systems, and exploring emerging
+                        tools like Unity for interactive experiences and creative applications.</p>
                 </div>
                 <div class="card">
                     <h3>Tools I reach for</h3>
                     <div class="chips">
                         <span class="chip">Figma</span>
+                        <span class="chip">Canva</span>
+                        <span class="chip">Affinity</span>
+                        <span class="chip">Unity</span>
                         <span class="chip">VS Code</span>
                         <span class="chip">React</span>
                         <span class="chip">JavaScript</span>
@@ -518,10 +667,11 @@
             </div>
             <div class="timeline">
                 <div class="timeline-item">
-                    <small>2024 - Present</small>
+                    <small>2024 - Present (2nd Year 4th Sem)</small>
                     <strong>B.Tech CSE, NIMS University</strong>
-                    <p>Diving into algorithms, web technologies, and design thinking while building side projects that
-                        combine code and aesthetics.</p>
+                    <p>Diving into algorithms, web technologies, and design thinking. Building side projects that
+                        combine code and aesthetics, while exploring design tools (Canva, Affinity) and game development
+                        (Unity).</p>
                 </div>
                 <div class="timeline-item">
                     <small>2023 - Present</small>
@@ -579,7 +729,9 @@
     <script>
         const navLinks = document.querySelectorAll('nav a');
         const sections = document.querySelectorAll('main section');
-        const observer = new IntersectionObserver((entries) => {
+
+        // Navigation active state observer
+        const navObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const id = entry.target.getAttribute('id');
                 const link = document.querySelector(`nav a[href="#${id}"]`);
@@ -590,7 +742,25 @@
             });
         }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
 
-        sections.forEach(section => observer.observe(section));
+        sections.forEach(section => navObserver.observe(section));
+
+        // Scroll reveal animation observer
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -100px 0px' });
+
+        // Apply reveal animations to text elements
+        document.querySelectorAll('h1, h2, p, .card, .timeline-item').forEach(el => {
+            if (!el.classList.contains('in-view')) {
+                el.classList.add('reveal-text');
+                revealObserver.observe(el);
+            }
+        });
 
         const form = document.getElementById('contact-form');
         const toast = document.getElementById('toast');
